@@ -1,0 +1,9 @@
+This software can be installed in three modes: Interactive,
+Silent and Unattended Preload. Interactive Mode requires 
+user input during installation; Silent Mode and Unattended 
+Preload do not.  
+
+This software also offers a set of command line flags, 
+which provide additional installation choices. The command 
+line flags are not case sensitive. Refer to Section 4 for 
+detailed descriptions of these flags.

@@ -27,36 +27,66 @@ void Task1()
 	cout << "\n--------------------------------------------------------------------------\n\nTask1\n\n";
 	SetConsoleTextAttribute(hConsole, 7);
 
-	ifstream fin("Source.cpp");
+	ifstream fin("Text.txt");
 	ofstream fout("OutTask1.txt");
 
-	char str[50][300];					// объявляем массив из 50 строк с 300 символами
-	int count = 0;						// объявляем переменную для счетчика строк
-	int max = 0;
-	int tmp;
+	int count0 = 0;	// кол-во строчек
+	int count1 = 0;	// все символы кроме букв
+	int count2 = 0;	// все гласные буквы
+	int count3 = 0;	// все цифры
+	int count4 = 0;	// все символы
+	int count5 = 0;	// все согласные буквы
 
-
-	while (!fin.eof())					// пока не достигнем конца файла --- eof -> end of file
+	char str[50][150];
+	
+	while (!fin.eof())
 	{
-		fin.getline(str[count], 300);	// записывем считанные из файла строки в массив
-		count++;
-
+		fin.getline(str[count0], 150);
+		count0++;
 	}
 
-	for (int i = 0; i != count; i++)	// ищем самую длинную строку
+	
+
+	for (int i = 0; i < count0; i++)
 	{
-		tmp = strlen(str[i]);
+		for (int j = 0; j < strlen(str[i]); j++)
+		{
+			// все символы кроме букв
 
-		if (tmp > max)
-			max = tmp;
+			if (str[i][j] >= ' ' && str[i][j]<'A' || str[i][j]>'Z' && str[i][j]<'a' || str[i][j]>'z')
+				count1++;
+			
+			//  все гласные буквы латинского алфавита Aa - Ee - Ii - Oo - Uu - Yy
 
+			else if (str[i][j] == 'A' || str[i][j] == 'E' || str[i][j] == 'I' || str[i][j] == 'O' || str[i][j] == 'U' || str[i][j] == 'Y' ||
+				str[i][j] == 'a' || str[i][j] == 'e' || str[i][j] == 'i' || str[i][j] == 'o' || str[i][j] == 'u' || str[i][j] == 'y')
+				count2++;
+			
+			// все цифры
+
+			if (str[i][j] >= '0' && str[i][j] <= '9')
+				count3++;
+			
+			count4++;
+		}
 	}
 
-	cout << "Task 1 -Длина самой длинной строки в файле DataSource1.txt -> " << max << " знаков" << endl;
-	fout << "\nTask 1 - Длина самой длинной строки в файле DataSource1.txt -> " << max << " знаков" << endl;
-}
+	count5 = count4 - count2 - count1;
 
+	fin.close();
+	fin.open("Text.txt");
 
+	
+	fout << "Статистика по файлу Text.txt :\n" << endl;
+	fout << "количество символов		\t-> " << count4 << endl;
+	fout << "количество строк		\t-> " << count0 << endl;
+	fout << "количество гласных букв	\t-> " << count2 << endl;
+	fout << "количество согласных букв \t-> " << count5 << endl;
+	fout << "количество цифр.		\t-> " << count3 << endl;
+
+	cout << "Статистика по файлу Text.txt записана в файле OutTask1.txt" << endl;
+}								
+								
 void Task2()
 {
 	/* 2.	Шифр Цезаря — один из древнейших шифров. При шифровании каждый символ заменяется другим, отстоящим от него 

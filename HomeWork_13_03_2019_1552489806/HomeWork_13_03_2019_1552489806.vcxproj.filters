@@ -19,4 +19,12 @@
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="OutTask1.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Text.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
