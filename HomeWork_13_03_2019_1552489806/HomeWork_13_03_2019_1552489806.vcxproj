@@ -119,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="OutTask1.txt" />
+    <Text Include="OutTask2encryptedText.txt" />
+    <Text Include="Task2dataSource.txt" />
     <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

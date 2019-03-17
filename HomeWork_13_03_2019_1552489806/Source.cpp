@@ -6,7 +6,7 @@
 
 
 
-// VladimirOrlovA /HomeWork_13_03_2019_15524898068
+// VladimirOrlovA /HomeWork_13_03_2019_1552489806
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -97,13 +97,55 @@ void Task2()
 Шифрованный текст: Фэзыя йз зьи ахлш пвёнлш чугрщцкфнлш дцосн, жг еютзм ъгб.
 Дан текстовый файл. Зашифровать его, используя шифр Цезаря. Результат записать в другой файл.
 */
-
+	
 	SetConsoleTextAttribute(hConsole, 10);
 	cout << "\n--------------------------------------------------------------------------\n\nTask2\n\n";
 	SetConsoleTextAttribute(hConsole, 7);
 
+	ifstream fin("Task2dataSource.txt");
+	ofstream fout("OutTask2encryptedText.txt");
 
+	
+	char str[50][150];
+	int count(0);
+	int k;
 
+	cout << "Шифруем текст в файле Task2dataSource.txt \n\nВведите ключ шифрования -> ";
+	cin >> k;
+	
+	while (!fin.eof())
+	{
+		fin.getline(str[count], 150); 
+		count++; 
+	}
+	
+	fout << "Оригинальный текст:\n\n";
+	
+	for (int i = 0; i < count; i++)
+	{
+		for (int j = 0; j < strlen(str[i]); j++)
+		{
+			fout << char(str[i][j]);
+		}
+		fout << endl;
+	}
+	
+	fout << "\n\nЗашифрованный текст:\n\n";
+
+	for (int i = 0; i < count; i++)
+	{
+		for (int j = 0; j < strlen(str[i]); j++)
+		{
+			if (str[i][j] == ' ')				// исключаю пробелы в шифоровании, чтобы исключить легкий взлом шифра путем поиска пробелов и тем самым побора ключа
+				fout << str[i][j];
+			else
+				fout << char(str[i][j] + k);
+		}
+		fout << endl;
+	}
+
+	cout << "\nРезультат шифрования в файле OutTask2encryptedText.txt";
+	
 }
 
 

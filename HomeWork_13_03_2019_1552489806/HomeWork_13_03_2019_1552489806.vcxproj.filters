@@ -26,5 +26,11 @@
     <Text Include="Text.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Task2dataSource.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="OutTask2encryptedText.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>
